@@ -1,20 +1,101 @@
 <template>
   <div id="app">
-
+    <button
+      class="start-game"
+      v-on:click="gameStart"
+    >
+    Start game
+    </button>
+    <table class="minesweeper">
+      <tr>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+      </tr>
+      <tr>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+      </tr>
+      <tr>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+      </tr>
+      <tr>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+      </tr>
+      <tr>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+      </tr>
+      <tr>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+      </tr>
+      <tr>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+      </tr>
+      <tr>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+      </tr>
+      <tr>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+      </tr>
+      <tr>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
+      </tr>
+    </table> 
   </div>
 </template>
 
 <script>
+//import Minesweeper from './components/Minsweeper';
+//import Minesweepers from './components/Minsweepers';
+
 export default {
   name: 'App',
   data: () => {
     return {
-
+      row: [],
+      col: [],
+      mined: false,
+      state: []
     };
   },
   methods: {
+    gameStart: function() {
+      alert('ok');
+//      this.generateGame(10, 20);
+    },
+    generateGame: function(rows=20, cols=10) {
+      this.rows = rows;
+      this.cols = cols;
 
-  }
+    }
+  },
 }
 </script>
 
