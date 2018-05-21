@@ -3,10 +3,14 @@
     <button
       class="start-game"
       v-on:click="gameStart"
+      
     >
     Start game
     </button>
-    <table class="minesweeper">
+    <table 
+      class="minesweeper"
+      v-if="started"    
+    >
       <tr>
         <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
         <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
@@ -82,12 +86,13 @@ export default {
       row: [],
       col: [],
       mined: false,
-      state: []
+      state: [],
+      started: false,
     };
   },
   methods: {
     gameStart: function() {
-      alert('ok');
+      this.started = true;
 //      this.generateGame(10, 20);
     },
     generateGame: function(rows=20, cols=10) {
