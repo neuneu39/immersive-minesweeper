@@ -76,6 +76,14 @@ export default {
        *
        * @return Array<tile objects>
        */
+      let arraytile = [];
+      for (let i = tile.row - 1; i < tile.row + 2; i++ ) {
+        for (let j = tile.col - 1; j < tile.col + 2; j++) {
+          if (i === tile.row && j === tile.col) continue;
+          if (this.isValid(i, j)) arraytile.push(this.tiles[i][j]);
+        }
+      }
+      return arraytile;
     },
 
     countNeighboringMines: function(neighbors) {
@@ -92,6 +100,7 @@ export default {
        *
        * @return boolean
        */
+      return tile.state[0] === 'unopened';
     },
 
     isValid: function(row, col) {
@@ -103,8 +112,8 @@ export default {
        *
        * @return boolean
        */
-      return row >= 0 && this.tiles.length < 11
-        && col >= 0 && this.tiles[row].length < 21;
+      return row >= 0 && row < this.tiles.length 
+        && col >= 0 && col < this.tiles[row].length;
     }
   }
 }
