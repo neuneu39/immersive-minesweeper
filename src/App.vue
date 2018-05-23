@@ -103,6 +103,8 @@ export default {
        *
        * @return boolean
        */
+      return row >= 0 && this.tiles.length < 11
+        && col >= 0 && this.tiles[row].length < 21;
     }
   }
 }
