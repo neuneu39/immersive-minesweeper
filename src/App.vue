@@ -1,76 +1,30 @@
 <template>
   <div id="app">
     <button
-      class="start-game"
-      v-on:click="gameStart"
-      
+      v-on:click="startGame"
     >
     Start game
     </button>
-    <table 
-      class="minesweeper"
-      v-if="started"    
-    >
+    <table class="minesweeper">
+      <tr
+        v-for="(row,r) in tiles"
+        v-bind:key="r"
+      >
+        <td
+          v-for="(tile, c) in row"
+          v-bind:key="c"
+          v-bind:class="tile.state"
+        >
+        </td>
+      </tr>
+<!--
       <tr>
         <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
         <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
         <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
         <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
       </tr>
-      <tr>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-      </tr>
-      <tr>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-      </tr>
-      <tr>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-      </tr>
-      <tr>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-      </tr>
-      <tr>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-      </tr>
-      <tr>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-      </tr>
-      <tr>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-      </tr>
-      <tr>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-      </tr>
-      <tr>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-        <td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td><td class="unopened"></td>
-      </tr>
+-->      
     </table> 
   </div>
 </template>
@@ -83,24 +37,39 @@ export default {
   name: 'App',
   data: () => {
     return {
-      row: [],
-      col: [],
-      mined: false,
-      state: [],
+      rows: 10,
+      columns: 20,
+      tiles: [],
       started: false,
     };
   },
   methods: {
-    gameStart: function() {
-      this.started = true;
-//      this.generateGame(10, 20);
-    },
-    generateGame: function(rows=20, cols=10) {
-      this.rows = rows;
-      this.cols = cols;
-
+    startGame: function() {
+      this.tiles = [];
+      for ( let i = 0; i < this.rows; i++) {
+        const row = [];
+        for (let j = 0; j < this.columns; j++) {
+          let tile = {
+            row: i,
+            col: j,
+            mined: Math.random() * 6 > 5,
+            state: ['unopened']
+          };
+          row.push(tile);
+        }
+        this.tiles.push(row);
+      }
     }
-  },
+//   gameStart: function() {
+//     this.started = true;
+//      this.generateGame(10, 20);
+//    },
+//    generateGame: function(rows=20, cols=10) {
+//      this.rows = rows;
+//      this.cols = cols;
+
+//    }
+  }
 }
 </script>
 
