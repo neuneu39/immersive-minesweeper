@@ -69,7 +69,11 @@ export default {
        *
        * @return undefined
        */
-      tile.state = ['flagged'];
+      if(tile.state[0] == 'flagged') {
+        tile.state =['unopened'];
+      } else {
+           tile.state = ['flagged'];        
+      }
     },
 
     getNeighbors: function(tile) {
