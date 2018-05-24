@@ -69,7 +69,7 @@ export default {
        *
        * @return undefined
        */
-      tile.state = 'flagged';
+      tile.state = ['flagged'];
     },
 
     getNeighbors: function(tile) {
