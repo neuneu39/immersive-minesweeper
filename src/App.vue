@@ -10,6 +10,7 @@
           v-for="(tile, c) in row"
           v-bind:key="c"
           v-bind:class="tile.state"
+          v-on:contextmenu.prevent="flagTile(tile)"
         >
         </td>
       </tr>
@@ -68,6 +69,7 @@ export default {
        *
        * @return undefined
        */
+      tile.state = 'flagged';
     },
 
     getNeighbors: function(tile) {
@@ -94,6 +96,11 @@ export default {
        *
        * @return number
        */
+      let countMines = 0;
+      neighbors.forEach(value => {
+        value.mined ? countMines =+ 1 : countMines;
+      })
+      return countMines;
     },
 
     isUnopened: function(tile) {
